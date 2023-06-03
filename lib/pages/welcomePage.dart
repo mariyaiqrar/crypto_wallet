@@ -1,4 +1,6 @@
 // ignore_for_file: file_names
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:app/pages/createWallet.dart';
@@ -92,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     DeployedContract contract = await loadContract();
     final ethFunction = contract.function(functionName);
     EthPrivateKey key = EthPrivateKey.fromHex(privAddress);
+    // log("key len:" + key.publicKey.toString());
     Transaction transaction = await Transaction.callContract(
         contract: contract,
         function: ethFunction,
